@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const config=JSON.parse(readFileSync('site.config.json','utf8'));
+const source=readFileSync('public/metrika.js','utf8');
+const id=Number(source.match(/var id = (\d+)/)?.[1]);
+assert(config.domain==='vershina029.ru' && config.city==='Северодвинск');
+assert(config.metrikaId>0 && config.metrikaId!==114256874 && id===config.metrikaId,'Dedicated Severodvinsk counter required');
+assert(readFileSync('public/CNAME','utf8').trim()===config.domain);
+assert(readFileSync('index.html','utf8').includes('https://'+config.domain+'/'));
+console.log('Severodvinsk deployment readiness passed');
