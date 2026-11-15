@@ -1,64 +1,63 @@
 import { Phone } from "lucide-react";
 import { PHONE_HREF } from "../data";
+import { useState } from "react";
 import Messengers from "./Messengers";
 
 export default function Hero() {
+  const [area] = useState<number | null>(null);
+  // Calendar statistics are not enabled for this domain yet; show the truthful fallback.
   return (
-    <section id="top" className="bg-white pt-[72px]">
-      <div className="relative isolate overflow-hidden bg-graphite lg:aspect-video lg:min-h-[760px]">
-        <img
-          src="/images/hero-severodvinsk-square.webp"
-          alt="Дом корабела и площадь Победы в Северодвинске через панорамное окно современного интерьера — сгенерированное изображение"
-          className="block aspect-[4/3] w-full object-cover object-right sm:aspect-video lg:absolute lg:inset-0 lg:h-full lg:aspect-auto lg:object-[62%_center]"
-          fetchPriority="high"
-          width={1600}
-          height={900}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(12,20,20,0.48)_0%,rgba(12,20,20,0.40)_38%,rgba(12,20,20,0.05)_64%,transparent_80%)] lg:block"
-        />
-        <div className="container-x relative z-10 py-10 text-white md:py-14 lg:flex lg:h-full lg:items-center lg:py-10">
-          <div className="max-w-[510px]">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-white/50" />
-              <span className="text-sm font-bold uppercase tracking-widest2 text-white/85">Вершина</span>
-              <span className="h-px w-8 bg-white/50" />
+    <section id="top" className="relative overflow-hidden bg-white pt-[72px]">
+      <div className="container-x grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.1fr_1fr]">
+        <div>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="h-px w-8 bg-emerald/40" />
+            <span className="text-base font-bold uppercase tracking-widest2 text-emerald">Вершина</span>
+            <span className="h-px w-8 bg-emerald/40" />
+          </div>
+          <h1 className="sr-only">Клининг в Северодвинске — уборка квартир и домов</h1>
+          <div aria-hidden="true" className="text-[17vw] font-bold leading-[0.95] tracking-tight text-graphite md:text-[120px]">
+            Чисто<span className="text-emerald">.</span>
+          </div>
+          <span
+            className="mt-1 block leading-[0.8] text-emerald text-[13vw] md:text-[66px]"
+            style={{ fontFamily: "'Caveat', cursive" }}
+          >
+            в Северодвинске
+          </span>
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/70 md:text-xl">
+            Доступный клининг в каждую квартиру и дом Северодвинска.
+            Точная цена за 2 минуты — до приезда, а не после.
+          </p>
+          <div className="mt-9">
+            <a href={PHONE_HREF} className="btn-primary">
+              Позвонить <Phone size={16} />
+            </a>
+          </div>
+          <Messengers className="mt-5" />
+          <dl className="mt-12 flex gap-10 border-t border-black/5 pt-7">
+            <div>
+              <dt className="text-2xl font-bold text-graphite">47</dt>
+              <dd className="mt-1 text-xs text-ink/55">пунктов чек-листа приёмки</dd>
             </div>
-            <h1 className="sr-only">Клининг в Северодвинске — уборка квартир и домов</h1>
-            <div aria-hidden="true" className="text-[76px] font-bold leading-[0.95] tracking-tight text-white md:text-[104px]">
-              Чисто.
+            <div>
+              <dt className="text-2xl font-bold text-graphite">48 ч</dt>
+              <dd className="mt-1 text-xs text-ink/55">гарантии после уборки</dd>
             </div>
-            <span
-              className="mt-2 block text-[42px] leading-[1.05] text-white md:text-[58px]"
-              style={{ fontFamily: "'Caveat', cursive" }}
-            >
-              в Северодвинске
-            </span>
-            <p className="mt-5 max-w-[430px] text-base leading-7 text-white/90 md:text-lg md:leading-8">
-              Доступный клининг в каждую квартиру и дом Северодвинска.
-              Точная цена за 2 минуты — до приезда, а не после.
-            </p>
-            <div className="mt-7">
-              <a href={PHONE_HREF} className="btn-primary">
-                Позвонить <Phone size={16} />
-              </a>
+            <div>
+              <dt className="text-2xl font-bold text-graphite">0 ₽</dt>
+              <dd className="mt-1 text-xs text-ink/55">доплат на месте</dd>
             </div>
-            <Messengers className="mt-5" />
-            <dl className="mt-9 grid grid-cols-3 gap-5 border-t border-white/25 pt-6">
-              <div>
-                <dt className="text-2xl font-bold text-white">47</dt>
-                <dd className="mt-1 text-xs leading-5 text-white/80">пунктов чек-листа приёмки</dd>
-              </div>
-              <div>
-                <dt className="text-2xl font-bold text-white">48 ч</dt>
-                <dd className="mt-1 text-xs leading-5 text-white/80">гарантии после уборки</dd>
-              </div>
-              <div>
-                <dt className="text-2xl font-bold text-white">0 ₽</dt>
-                <dd className="mt-1 text-xs leading-5 text-white/80">доплат на месте</dd>
-              </div>
-            </dl>
+          </dl>
+        </div>
+        <div className="relative">
+          <img src="/images/hero-severodvinsk-square.webp" alt="Современный интерьер с видом через площадь Победы на Дом корабела в Северодвинске — сгенерированное изображение" className="aspect-[4/5] w-full rounded-3xl object-cover object-right" fetchPriority="high" />
+          <div className="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-5 shadow-card md:block">
+            <div className="text-[11px] font-semibold uppercase tracking-widest2 text-emerald">{area === null ? 'приёмка по стандарту' : 'убрано в этом месяце'}</div>
+            <div className="mt-1 text-2xl font-bold text-graphite">
+              {area === null ? '47 пунктов' : `${area.toLocaleString('ru-RU')} м²`}
+            </div>
+            {area !== null && <div className="mt-1 text-xs text-ink/55">по всем городам «Вершины»</div>}
           </div>
         </div>
       </div>
